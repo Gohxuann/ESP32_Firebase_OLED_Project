@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32 OLED Message Update</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding-top: 50px; }
+    input { padding: 10px; width: 300px; }
+    button { padding: 10px 20px; margin-top: 10px; }
+    #status { margin-top: 20px; color: green; }
+  </style>
+</head>
+<body>
+  <h2>Update Message for ESP32 OLED</h2>
+  <input type="text" id="msgInput" placeholder="Enter message" />
+  <br>
+  <button onclick="updateMessage()">Update Message</button>
+  <div id="status"></div>
+
+  <!-- Firebase SDK v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script>
+    // ✅ Replace with your Firebase config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",  // <--- Paste your real Web API key here
+      databaseURL: "YOUR_DATABASE_URL", // <--- Paste your real Database URL here
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function updateMessage() {
+      const msg = document.getElementById('msgInput').value;
+      db.ref("/eeprom/message").set(msg)
+        .then(() => {
+          document.getElementById('status').innerText = "✅ Message updated!";
+        })
+        .catch((error) => {
+          document.getElementById('status').innerText = "❌ Error: " + error.message;
+        });
+    }
+  </script>
+</body>
+</html>

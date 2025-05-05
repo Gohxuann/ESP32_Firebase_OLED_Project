@@ -16,7 +16,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define EEPROM_SIZE 100
 String ssid, password, username;
 
-
+#define API_KEY "YOUR_API_KEY"
+#define DATABASE_URL "YOUR_DATABASE_URL"
 
 // Firebase objects
 FirebaseData fbdo;
@@ -70,9 +71,9 @@ void setup() {
   }
 
   //Write credentials (optional: comment out after first upload)
-  writeToEEPROM(0, "JanetLBL");
-  writeToEEPROM(32, "GnLdj290");
-  writeToEEPROM(64, "abbygoh");
+  writeToEEPROM(0, "YOUR_SSID");
+  writeToEEPROM(32, "YOUR_PASSWORD");
+  writeToEEPROM(64, "YOUR_USERNAME");
 
   // Read from EEPROM
   ssid = readFromEEPROM(0, 32);
