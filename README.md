@@ -33,10 +33,12 @@ This project is an IoT credential and message display system built using **ESP32
 
 - Arduino IDE with the following libraries:
   - `Firebase_ESP_Client`
-  - `Adafruit SSD1306`
-  - `Adafruit GFX`
-  - `ESPAsyncWebServer`
-  - `AsyncTCP`
+  - `Adafruit_SSD1306`
+  - `Adafruit_GFX`
+  - `EEPROM`
+  - `Wire`
+  - `WebServer`
+
 
 - Firebase project (with Realtime DB and Authentication enabled)
 - Browser with access to `index.html` (control panel)
